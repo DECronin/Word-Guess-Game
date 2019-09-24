@@ -20,13 +20,33 @@
 
             </div>
             <div class="game-play">
-                <!-- indert text from game
-                "Press Any Key to Get Started
-                Wins:
-                Current Word:
-                Number of Guesses Remaining:
-                Letters Already GUessed:-->
-                <p>Press Any Key to Get Started</p>
+                <!-- make array of words
+                make wins variable / starting at hidden 0 counting up
+                make variable for number of guesses / going to be counting down
+                display / accept any key to Started
+                loop1{(while?)
+                    display number of wins
+                        loop2{(for)
+                            retrieve word to play from array
+                            loop3{ (if else)
+                                determines if word has already been played
+                                if yes - retry
+                                if no -continue
+                            }
+                            display current word _'s
+                            display guess numbers
+                            user press a key
+                            capture this key
+                            compare key to word's function
+                            display key in word or under Guesses
+                            changes variable of guess number -1
+                        }
+                    determine win or loss and change win variable +1 if needed
+
+                    DO NOT FORGET TO CREATE EXITS
+                } -->
+
+                <button onkeypress="function1()">Press Any Key to Get Started!</button>
                 <p>Wins:</p>
                 <p id="wins"> </p>
                 <p>Current Word:</p>
