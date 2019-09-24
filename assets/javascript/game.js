@@ -9,3 +9,5 @@ var guessesNumber = 17;
 //     }
 // }
 
+//var guess = string.fromCharCode(evemt.keycode).toUpperCase();
+//to capture guess into loop to compare and later array for word or incorrect guesses
