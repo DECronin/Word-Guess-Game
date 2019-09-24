@@ -28,16 +28,26 @@
                     display number of wins
                         loop2{(for)
                             retrieve word to play from array
-                            loop3{ (if else)
-                                determines if word has already been played
-                                if yes - retry
-                                if no -continue
-                            }
+                                loop3{ (if else)
+                                    determines if word has already been played
+                                    if yes - retry
+                                    if no -continue
+                                }
                             display current word _'s
+                                loop4 (for?){
+                                    determine number of _'s to display and which 
+                                    index they belong until letter is correctly guessed
+                                }
                             display guess numbers
                             user press a key
                             capture this key
                             compare key to word's function
+                                loop5{(for?)
+                                    key .toUpperCase
+                                    word .toUpperCase if not alread input as so
+                                    compare
+                                    decide which variable guess belngs to and where
+                                }
                             display key in word or under Guesses
                             changes variable of guess number -1
                         }
