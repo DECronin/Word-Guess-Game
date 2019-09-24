@@ -1,4 +1,4 @@
-var words =["rock", "instromental", "jazz"] //.......
+var genres =["rock", "instromental", "jazz"] //....... this will become a potential matrix when adding music?
 var wins = 0;
 var guessesNumber = 17;
 
