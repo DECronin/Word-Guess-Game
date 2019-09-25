@@ -11,35 +11,48 @@
                 continue;
             }else{
                 round++;
-                pastGenres.push(currentWord);
-                console.log(round);
-                console.log(currentWord);
-                console.log(pastGenres);
-                console.log("------------------")  
+                                    // pastGenres.push(currentWord);
+                                    // console.log(round);
+                                    // console.log(currentWord);
+                                    // console.log(pastGenres);
+                                    // console.log("------------------")  
             }
         }
     } 
-// console.log(currentWord);
-// console.log(genres);
-// console.log(wordIndex);
-}
-//exit loop being all rounds have been played
-var wins = 0;
-var guessesNumber = 17;
-//var guess = string.fromCharCode(evemt.keycode).toUpperCase();
+}                                   //exit loop being all rounds have been played
+
+// var guess = string.fromCharCode(evemt.keycode).toUpperCase();
 //to capture guess into loop to compare and later array for word or incorrect guesses
-
-
 // functionWins(){ ----arrayName.push() allows to add value to an egsisting array / .unshift adds items to begining of array
-// } loop 2
-
-// functionWord(){
 // // word chosing from array 
-// //
 // //loop to ensure not already used
-// } loops 3, 4 and 5?
-//functionDisplay()?
 //functionCompare()?
-
 //.pop() and .shift() remove respectively last and first items from array
 //The splice() method allows us to add/remove items to/from an array, and to specifically indicate the index of the elements that have to be added /removed
+
+function Wins(wins, loses, guessNumber, rounds, genres){
+    var wins = 0;
+    var loses = 0;
+    while(rounds <= genres.length){
+        function Guesses;
+        if (guessNumber === 0){
+            loses++;
+        }else {
+            wins++;
+        }
+    }
+}
+
+function Guesses(currentWord, correct, incorrect){
+    var guessesNumber = 17;
+    while (correct < currentWord.length && incorrect < guessNumber){
+        //loop or function gameplay of letters, spaces/blanks, displaying filled blanks or wrong guesses
+        // guessNumber--;
+        // if (){
+        //   correct++;
+       // } else{
+        //    incorrect++;
+       //}
+       }
+    }
+}
