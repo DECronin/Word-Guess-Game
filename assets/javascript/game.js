@@ -34,16 +34,16 @@ function Wins(wins, loses, guessNumber, rounds, genres){
     var wins = 0;
     var loses = 0;
     while(rounds <= genres.length){
-        function Guesses;
+        guessNumber = new function Guesses(guessNumber);
         if (guessNumber === 0){
             loses++;
         }else {
             wins++;
         }
-    }
+    } // var (name) = new funcName() //chages variable value to that returned or recieved from function?
 }
 
-function Guesses(currentWord, correct, incorrect){
+function Guesses(currentWord, correct, incorrect, guessNumber){
     var guessesNumber = 17;
     while (correct < currentWord.length && incorrect < guessNumber){
         //loop or function gameplay of letters, spaces/blanks, displaying filled blanks or wrong guesses
@@ -55,4 +55,5 @@ function Guesses(currentWord, correct, incorrect){
        //}
        }
     }
+    return guessNumber;
 }
