@@ -1,13 +1,22 @@
 // "click any key to start"
- onkeypress = function Main(genres, currentWord){
+ onkeypress = function Main(){
     var genres = ["rock", "instromental", "jazz"] //....... this will become a potential matrix when adding music and images?
-    var currentWord = genres[Math.floor(Math.random()*genres.length)];//^//mayby use matrix loop here for images and music
-
-            
-        console.log(currentWord);
-    //for (i = 0; i < genres.length; i++){
-    // var pastGenres = []    
-    //}
+    //^//mayby use matrix loop here for images and music
+    var pastGenres = []   
+    
+    for (i = 0; i < genres.length; i++){
+        var currentWord = genres[Math.floor(Math.random()*genres.length)];
+        var wordIndex = pastGenres.indexOf(currentWord);
+        if ( wordIndex > -1){
+         return false;
+        }else{
+              pastGenres.push(currentWord);
+         }
+    }       
+    console.log(pastGenres)
+    //
+    //  
+    //
 }
 //exit loop being all rounds have been played
 var wins = 0;
