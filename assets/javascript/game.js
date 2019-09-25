@@ -3,20 +3,22 @@
     var genres = ["rock", "instromental", "jazz", "blues", "screamo", "classical", "oldies", "disney", "pop","folk", "rap", "kareoke"] //....... this will become a potential matrix when adding music and images?
     //^//mayby use matrix loop here for images and music
     var pastGenres = []   
-    
-    for (i = 0; i < genres.length; i++){
-        var currentWord = genres[Math.floor(Math.random()*genres.length)];
-        var wordIndex = pastGenres.indexOf(currentWord);
-        if ( wordIndex > -1){
-        //  return false;
-        console.log("?");
-        }else{
-            pastGenres.push(currentWord);
-         }
-    }
-    console.log(pastGenres);
-    console.log("------------------")
-// console.log(pastGenres);       
+    for (round = 1; round <= genres.length; round++){
+        for (i = 0; i < round; i++){
+            var currentWord = genres[Math.floor(Math.random()*genres.length)];
+            var wordIndex = pastGenres.indexOf(currentWord);
+            if ( wordIndex > -1){
+                // return;
+                console.log("?");
+            }else{
+                pastGenres.push(currentWord);
+                console.log(round);
+                console.log(currentWord);
+                console.log(pastGenres);
+                console.log("------------------")  
+            }   
+        }
+    } 
 // console.log(currentWord);
 // console.log(genres);
 // console.log(wordIndex);
