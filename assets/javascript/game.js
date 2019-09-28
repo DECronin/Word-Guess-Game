@@ -1,5 +1,5 @@
 // "click any key to start"
- onkeypress = function Main(genres, pastGenres, wordIndex, currentWord){
+ onkeypress = function Main(){
     var genres = ["rock", "instromental", "jazz", "blues", "screamo", "classical", "oldies", "disney", "pop","folk", "rap", "kareoke"] //....... this will become a potential matrix when adding music and images?
     //^//mayby use matrix loop here for images and music
     var pastGenres = [] 
@@ -15,21 +15,40 @@
                 round++;
                 pastGenres.push(currentWord);
                 RoundWord(currentWord); // move to inside Guesses // inside Wins // Link Wins here?
-                break;
+                break; //for debugging so that i'm only consoling with 1 word at a time
             }
-        }    
+        }                           // var ___ = functionResult(); ==== var ___ is reasigned as the value returned from function instead of it being left alone
     } 
 }                                   //exit loop being all rounds have been played
 
-            // console.log(round);
+
+function RoundWord(word){
+    console.log(word)
+    var letters = word.split("");
+    var blanks = ("");
+    var incorrect = [];
+    for(i = 0; i < letters.length; i++){
+        document.getElementById('display-word').innerHTML = blanks;
+        var guess = string.fromCharCode(event.keycode).toUpperCase();
+        for (ctr = 0; ctr < letters.length; ctr++){
+            if (letters[i][ctr].toLowerCase() === guess.toLowerCase()){
+                blank += letters[i][ctr];
+                console.log("LETTER:" + letters[i][ctr]);
+            }
+            else{
+                blank += "_ ";
+                incorrect += letters[i][ctr];
+                console.log("NOPE: ___ " + letters[i][ctr]);
+            }
+        }// replacing  _'s with letters
+    }
+}            // console.log(round);
             // console.log(currentWord);
             // console.log(pastGenres);
             // console.log("------------------")  
 // var guess = string.fromCharCode(evemt.keycode).toUpperCase();
 //to capture guess into loop to compare and later array for word or incorrect guesses
 // functionWins(){ ----arrayName.push() allows to add value to an egsisting array / .unshift adds items to begining of array
-// // word chosing from array 
-// //loop to ensure not already used
 //functionCompare()?
 //.pop() and .shift() remove respectively last and first items from array
 //The splice() method allows us to add/remove items to/from an array, and to specifically indicate the index of the elements that have to be added /removed
@@ -51,7 +70,7 @@
 
 // function Guesses(currentWord, correct, incorrect, guessNumber){
 //     var guessesNumber = 17;
-//     while (correct < currentWord.length && incorrect < guessNumber){
+//     while (correct < currentWord.length or incorrect < guessNumber){
 //         //function RoundWord();
 //         //^ loop or function gameplay of letters, spaces/blanks, displaying filled blanks or wrong guesses
 //         // guessNumber--;
@@ -64,14 +83,3 @@
 //     }
 //     return guessNumber;
 // }
-
-function RoundWord(currentWord, letters){
-    console.log(currentWord)
-    var letters = currentWord.split("");
-    var blanks = ("");
-    for(i = 0; i < letters.length; i++){
-        blanks += "_ ";
-    }
-    document.getElementById('display-word').innerHTML = blanks;
-
-}
