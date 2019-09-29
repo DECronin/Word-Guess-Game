@@ -1,64 +1,75 @@
 ///////DECLARE GLOBAL VARIABLES////////
 //==================================//
-var genres = ["rock", "instromental", "jazz", "blues", "screamo", "classical", "oldies", "disney", "pop","folk", "rap", "kareoke"] //....... this will become a potential matrix when adding music and images?
+var genres = ["rock", "instromental", "jazz", "blues", "screamo", "classical", "oldies", "disney", "pop","folk", "rap", "kareoke"]; //....... this will become a potential matrix when adding music and images?
     //make an object instead of array to call forth images or sounds but later
     //will have to alter exsisting 'call-forth's when that happens
-var pastGenres = [] 
-round = 0
+var pastGenres = [] ;
+var round = 0;
 
 //////FUNCTIONS///////////
 //======================//
-// "click any key to start"
- onkeypress = function Main(){
-    if (round < genres.length){
-        for (i = 0; i < round + 1; i++){
-            var currentWord = genres[Math.floor(Math.random()*genres.length)];
-            //DO NOT TURN INTO FUNCTION UNLESS YOU REARANGE EXITS FOR LOOP
-            var wordIndex = pastGenres.indexOf(currentWord);
-            if ( wordIndex > -1){
-                continue;
-            }else{
-                round++;
-                pastGenres.push(currentWord);
-                RoundWord(currentWord); // move to inside Guesses // inside Wins // Link Wins here?
-                break; //for debugging so that i'm only consoling with 1 word at a time
-            }
-        } // var ___ = functionResult(); ==== var ___ is reasigned as the value returned from function instead of it being left alone
-    } 
-    else{
-        document.write("Game Over");
-    }
+ function roundCataloging(){
+    for (i = 0; i < genres.length; ){
+        var roundWords = genres[Math.floor(Math.random()*genres.length)];
+        //DO NOT TURN INTO FUNCTION UNLESS YOU REARANGE EXITS FOR LOOP
+        var wordIndex = pastGenres.indexOf(roundWords);
+        if ( wordIndex > -1){
+            continue;
+        }else{
+            pastGenres.push(roundWords);
+            i++;
+        }
+    } // var ___ = functionResult(); ==== var ___ is reasigned as the value returned from function instead of it being left alone
 }                                   //exit loop being all rounds have been played
 
-function RoundWord(word){
-    console.log(word)
+function roundWord(word){
+    console.log(word);
     var letters = word.split("");
+    console.log(letters);
     var incorrect = [];
     var blanks = [];
     for(i = 0; i < letters.length; i++){
         blanks.push("_ ");
-        document.onkeyup = function(event){
-        document.getElementById('display-word').innerHTML = blanks;
-        var guess = event.key.toUpperCase();
-        letterPlay(blanks, incorrect, letters, event);
-        //document.getElementById('rem-letters').innerHtml = incorrect;
-        }
     }
+    document.onkeyup = function(event){
+        letterPlay(blanks, letters, incorrect);
+    }
+    console.log(blanks);
+    document.getElementById('display-word').innerHTML = blanks;
+    //document.getElementById('rem-letters').innerHtml = incorrect;
+    
 } 
 
-function letterPlay(blanks, incorrect, letters, guess, event){
+function letterPlay(blanks, letters, incorrect){
+    var guess = event.key.toUpperCase();
     if (letters.includes(guess)){
-        letterIndex = letters.indexOf(guess);
-        return blanks
+        blanks += guess;
+        //letterIndex = letters.indexOf(guess);
     }
     else{
-        incorrect += guess;
+        blanks += guess;
+        return incorrect += guess;
     }
+    return blanks
 }
 
 ///////// ACTIONS // CALLING /// EVENT LISTENERS? //////
 ///===================================================//
+document.onkeyup = function(event){
+    roundCataloging(); 
+    console.log("=================================================================================");
+    console.log(pastGenres);
 
+    if (round < pastGenres.length){
+        var word = pastGenres[round];
+        roundWord(word);
+
+        round++;
+    }
+    else{
+        document.write("Game Over");
+    }
+}
 
 //////// NOTES /////
 //================//
@@ -103,3 +114,5 @@ function letterPlay(blanks, incorrect, letters, guess, event){
 //     }
 //     return guessNumber;
 // }
+
+
