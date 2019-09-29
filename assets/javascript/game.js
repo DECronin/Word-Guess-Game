@@ -5,7 +5,7 @@ var genres = ["rock", "instromental", "jazz", "blues", "screamo", "classical", "
     //will have to alter exsisting 'call-forth's when that happens
 var pastGenres = [] ;
 var round = 0;
-
+var correct =[];
 var incorrect = [];
 var blanks = [];
 
@@ -35,9 +35,7 @@ function roundWord(word){
     
     document.getElementById('display-word').innerHTML = blanks;
     console.log(blanks);
-    letterPlay(letters); ///////////////THIS IS WHERE I HAVE MY CURRENT DEBUGGING
-    console.log(blanks);
-    document.getElementById('display-word').innerHTML = blanks;
+    letterPlay(letters); 
     //document.getElementById('rem-letters').innerHtml = incorrect;
     
 } 
@@ -45,15 +43,22 @@ function roundWord(word){
 function letterPlay(letters){
     document.onkeyup = function (event){
         var guess = event.key.toUpperCase();
-        if (letters.includes(guess)){
-            blanks += guess;
-            //letterIndex = letters.indexOf(guess);
+        console.log(guess);
+        var wordDisplay = ("");
+
+        for(i = 0; i < letters.length; i++){
+            if(guess === letters[i].toUpperCase()){
+                correct.push(guess);
+                wordDisplay += guess;
+            }
+            else{
+                incorrect.push(guess);
+                wordDisplay += "_ ";
+                continue;
+            }
         }
-        else{
-            blanks += guess;
-            return incorrect += guess;
-        }
-        return blanks
+        console.log(wordDisplay);
+        document.getElementById('display-word').innerHTML = wordDisplay;
     }
 }
 
