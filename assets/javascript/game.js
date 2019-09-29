@@ -6,6 +6,9 @@ var genres = ["rock", "instromental", "jazz", "blues", "screamo", "classical", "
 var pastGenres = [] ;
 var round = 0;
 
+var incorrect = [];
+var blanks = [];
+
 //////FUNCTIONS///////////
 //======================//
  function roundCataloging(){
@@ -26,31 +29,32 @@ function roundWord(word){
     console.log(word);
     var letters = word.split("");
     console.log(letters);
-    var incorrect = [];
-    var blanks = [];
     for(i = 0; i < letters.length; i++){
         blanks.push("_ ");
     }
-    document.onkeyup = function(event){
-        letterPlay(blanks, letters, incorrect);
-    }
+    
+    document.getElementById('display-word').innerHTML = blanks;
+    console.log(blanks);
+    letterPlay(letters); ///////////////THIS IS WHERE I HAVE MY CURRENT DEBUGGING
     console.log(blanks);
     document.getElementById('display-word').innerHTML = blanks;
     //document.getElementById('rem-letters').innerHtml = incorrect;
     
 } 
 
-function letterPlay(blanks, letters, incorrect){
-    var guess = event.key.toUpperCase();
-    if (letters.includes(guess)){
-        blanks += guess;
-        //letterIndex = letters.indexOf(guess);
+function letterPlay(letters){
+    document.onkeyup = function (event){
+        var guess = event.key.toUpperCase();
+        if (letters.includes(guess)){
+            blanks += guess;
+            //letterIndex = letters.indexOf(guess);
+        }
+        else{
+            blanks += guess;
+            return incorrect += guess;
+        }
+        return blanks
     }
-    else{
-        blanks += guess;
-        return incorrect += guess;
-    }
-    return blanks
 }
 
 ///////// ACTIONS // CALLING /// EVENT LISTENERS? //////
