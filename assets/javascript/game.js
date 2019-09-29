@@ -1,12 +1,18 @@
+///////DECLARE GLOBAL VARIABLES////////
+//==================================//
+var genres = ["rock", "instromental", "jazz", "blues", "screamo", "classical", "oldies", "disney", "pop","folk", "rap", "kareoke"] //....... this will become a potential matrix when adding music and images?
+    //make an object instead of array to call forth images or sounds but later
+    //will have to alter exsisting 'call-forth's when that happens
+var pastGenres = [] 
+round = 0
+
+//////FUNCTIONS///////////
+//======================//
 // "click any key to start"
  onkeypress = function Main(){
-    var genres = ["rock", "instromental", "jazz", "blues", "screamo", "classical", "oldies", "disney", "pop","folk", "rap", "kareoke"] //....... this will become a potential matrix when adding music and images?
-    //^//mayby use matrix loop here for images and music
-    var pastGenres = [] 
-    for (round = 0; round < genres.length;) {
+    if (round < genres.length){
         for (i = 0; i < round + 1; i++){
             var currentWord = genres[Math.floor(Math.random()*genres.length)];
-
             //DO NOT TURN INTO FUNCTION UNLESS YOU REARANGE EXITS FOR LOOP
             var wordIndex = pastGenres.indexOf(currentWord);
             if ( wordIndex > -1){
@@ -17,32 +23,46 @@
                 RoundWord(currentWord); // move to inside Guesses // inside Wins // Link Wins here?
                 break; //for debugging so that i'm only consoling with 1 word at a time
             }
-        }                           // var ___ = functionResult(); ==== var ___ is reasigned as the value returned from function instead of it being left alone
+        } // var ___ = functionResult(); ==== var ___ is reasigned as the value returned from function instead of it being left alone
     } 
+    else{
+        document.write("Game Over");
+    }
 }                                   //exit loop being all rounds have been played
-
 
 function RoundWord(word){
     console.log(word)
     var letters = word.split("");
-    var blanks = ("");
     var incorrect = [];
+    var blanks = [];
     for(i = 0; i < letters.length; i++){
+        blanks.push("_ ");
+        document.onkeyup = function(event){
         document.getElementById('display-word').innerHTML = blanks;
-        var guess = string.fromCharCode(event.keycode).toUpperCase();
-        for (ctr = 0; ctr < letters.length; ctr++){
-            if (letters[i][ctr].toLowerCase() === guess.toLowerCase()){
-                blank += letters[i][ctr];
-                console.log("LETTER:" + letters[i][ctr]);
-            }
-            else{
-                blank += "_ ";
-                incorrect += letters[i][ctr];
-                console.log("NOPE: ___ " + letters[i][ctr]);
-            }
-        }// replacing  _'s with letters
+        var guess = event.key.toUpperCase();
+        letterPlay(blanks, incorrect, letters, event);
+        //document.getElementById('rem-letters').innerHtml = incorrect;
+        }
     }
-}            // console.log(round);
+} 
+
+function letterPlay(blanks, incorrect, letters, guess, event){
+    if (letters.includes(guess)){
+        letterIndex = letters.indexOf(guess);
+        return blanks
+    }
+    else{
+        incorrect += guess;
+    }
+}
+
+///////// ACTIONS // CALLING /// EVENT LISTENERS? //////
+///===================================================//
+
+
+//////// NOTES /////
+//================//
+// console.log(round);
             // console.log(currentWord);
             // console.log(pastGenres);
             // console.log("------------------")  
