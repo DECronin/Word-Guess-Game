@@ -27,24 +27,18 @@ var wins = 0;
 }                                 
 
 function roundWord(word){
-    console.log(word);
     var letters = word.split("");
-    console.log(letters);
     for(i = 0; i < letters.length; i++){
         blanks.push("_ ");
     }
-    
     document.getElementById('display-word').innerHTML = blanks;
-    console.log(blanks);
     letterPlay(letters); 
-    
 } 
 
 function letterPlay(letters){
     document.onkeyup = function (event){
         var found = false;
         var guess = event.key.toUpperCase();
-        console.log(guess);
         var wordDisplay = ("");
         for(i = 0; i < letters.length; i++){
             if(guess === letters[i].toUpperCase()){
@@ -67,11 +61,10 @@ function letterPlay(letters){
              incorrect.push(guess);
         }
         document.getElementById('guess-number').innerHTML = guessCount;
-        console.log(guessCount);
         document.getElementById('display-word').innerHTML = wordDisplay;
         document.getElementById('rem-letters').innerHTML = incorrect;
         document.getElementById('wins').innerHTML = wins;
-        console.log(incorrect);
+        console.log(incorrect); ///////==========================find a way not to replicate previous incorrect answers
         if (guessCount < 1){
             newRound();
         }else if(wordDisplay.indexOf("_ ") < 0){
@@ -99,10 +92,7 @@ function newRound(){
 ///////// ACTIONS // CALLING /// EVENT LISTENERS //////
 ///===================================================//
 document.onkeyup = function(event){
-    roundCataloging(); 
-    console.log("=================================================================================");
+    roundCataloging();
     newRound();
-    console.log(pastGenres);
-
 }
 
