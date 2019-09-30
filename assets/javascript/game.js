@@ -9,6 +9,7 @@ var correct =[];
 var incorrect = [];
 var blanks = [];
 var guessCount = 17;
+var wins = 0;
 
 //////FUNCTIONS///////////
 //======================//
@@ -37,7 +38,6 @@ function roundWord(word){
     document.getElementById('display-word').innerHTML = blanks;
     console.log(blanks);
     letterPlay(letters); 
-    //document.getElementById('rem-letters').innerHtml = incorrect;
     
 } 
 
@@ -51,6 +51,7 @@ function letterPlay(letters){
             if(guess === letters[i].toUpperCase()){
                 wordDisplay += letters[i];
                 found = true;
+                inWord = true;
             }else if(correct.indexOf(letters[i].toUpperCase()) > -1){
                 wordDisplay += letters[i];
             }else if(incorrect.indexOf(letters[i].toUpperCase()) > -1){
@@ -60,18 +61,22 @@ function letterPlay(letters){
                 continue;
             }
         }
+        guessCount--;
         if (found){
             correct.push(guess);
         }else{
              incorrect.push(guess);
-             guessCount--;
-
         }
-        console.log(wordDisplay);
-        console.log("remaining guesses: " + guessCount);
-        console.log("incorrects: " + incorrect)
+        document.getElementById('guess-number').innerHTML = guessCount;
+        console.log(guessCount);
         document.getElementById('display-word').innerHTML = wordDisplay;
+        document.getElementById('rem-letters').innerHTML = incorrect;
+        document.getElementById('wins').innerHTML = wins;
+        console.log(incorrect);
         if (guessCount < 1){
+            newRound();
+        }else if(wordDisplay.indexOf("_ ") < 0){
+            wins++;
             newRound();
         }
     }
