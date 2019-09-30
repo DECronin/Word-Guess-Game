@@ -8,6 +8,7 @@ var round = 0;
 var correct =[];
 var incorrect = [];
 var blanks = [];
+var guessCount = 17;
 
 //////FUNCTIONS///////////
 //======================//
@@ -42,33 +43,44 @@ function roundWord(word){
 
 function letterPlay(letters){
     document.onkeyup = function (event){
+        var found = false;
         var guess = event.key.toUpperCase();
         console.log(guess);
         var wordDisplay = ("");
-
         for(i = 0; i < letters.length; i++){
             if(guess === letters[i].toUpperCase()){
-                correct.push(guess);
-                wordDisplay += guess;
-            }
-            else{
-                incorrect.push(guess);
+                wordDisplay += letters[i];
+                found = true;
+            }else if(correct.indexOf(letters[i].toUpperCase()) > -1){
+                wordDisplay += letters[i];
+            }else if(incorrect.indexOf(letters[i].toUpperCase()) > -1){
+                continue;
+            }else{
                 wordDisplay += "_ ";
                 continue;
             }
         }
+        if (found){
+            correct.push(guess);
+        }else{
+             incorrect.push(guess);
+             guessCount--;
+
+        }
         console.log(wordDisplay);
+        console.log("remaining guesses: " + guessCount);
+        console.log("incorrects: " + incorrect)
         document.getElementById('display-word').innerHTML = wordDisplay;
+        if (guessCount < 1){
+            newRound();
+        }
     }
 }
 
-///////// ACTIONS // CALLING /// EVENT LISTENERS? //////
-///===================================================//
-document.onkeyup = function(event){
-    roundCataloging(); 
-    console.log("=================================================================================");
-    console.log(pastGenres);
-
+function newRound(){
+    guessCount = 17;
+    incorrect = [];
+    correct = [];
     if (round < pastGenres.length){
         var word = pastGenres[round];
         roundWord(word);
@@ -78,6 +90,16 @@ document.onkeyup = function(event){
     else{
         document.write("Game Over");
     }
+}
+
+///////// ACTIONS // CALLING /// EVENT LISTENERS? //////
+///===================================================//
+document.onkeyup = function(event){
+    roundCataloging(); 
+    console.log("=================================================================================");
+    newRound();
+    console.log(pastGenres);
+
 }
 
 //////// NOTES /////
