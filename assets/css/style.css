@@ -1,0 +1,28 @@
+body{
+    background-image: url(../images/spiration\ dark.png);
+    background-repeat: repeat;
+    width: 100vw;
+    height: 100vh;
+}
+.container{
+    width: 70%;
+    margin: 25px auto;
+    background-color: rgb(11, 122, 89, 0.65);
+    overflow: auto;
+    border: solid 10px black;
+}
+header{
+    color: seagreen;
+    text-align: center;
+    font-size: 35px;
+    line-height: 115%;
+}
+.game-play{
+    width: 60%;
+    float: right;
+    text-align: center;
+}
+p{
+    font-size: 20px;
+    font-weight: bold;
+}
