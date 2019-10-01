@@ -47,8 +47,8 @@ function letterPlay(letters){
                 inWord = true;
             }else if(correct.indexOf(letters[i].toUpperCase()) > -1){
                 wordDisplay += letters[i];
-            }else if(incorrect.indexOf(letters[i].toUpperCase()) > -1){
-                continue;
+            }else if(incorrect.indexOf(guess.toUpperCase()) > -1){
+                return;
             }else{
                 wordDisplay += "_ ";
                 continue;
