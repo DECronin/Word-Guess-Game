@@ -7,7 +7,7 @@ var pastGenres = [] ;
 var round = 0;
 var correct =[];
 var incorrect = [];
-var blanks = [];
+
 var guessCount = 17;
 var wins = 0;
 
@@ -27,10 +27,13 @@ var wins = 0;
 }                                 
 
 function roundWord(word){
+    var blanks = ("");
     var letters = word.split("");
     for(i = 0; i < letters.length; i++){
-        blanks.push("_ ");
+        blanks += "_ ";
     }
+    guessCount = 17;
+    document.getElementById('guess-number').innerHTML = guessCount;
     document.getElementById('display-word').innerHTML = blanks;
     letterPlay(letters); 
 } 
@@ -58,7 +61,7 @@ function letterPlay(letters){
         if (found){
             correct.push(guess);
         }else{
-             incorrect.push(guess);
+            incorrect.push(guess);
         }
         document.getElementById('guess-number').innerHTML = guessCount;
         document.getElementById('display-word').innerHTML = wordDisplay;
@@ -73,7 +76,7 @@ function letterPlay(letters){
 }
 
 function newRound(){
-    guessCount = 17;
+    
     incorrect = [];
     correct = [];
     if (round < pastGenres.length){
