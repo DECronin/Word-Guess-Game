@@ -7,7 +7,6 @@ var pastGenres = [] ;
 var round = 0;
 var correct =[];
 var incorrect = [];
-
 var guessCount = 17;
 var wins = 0;
 
@@ -28,6 +27,8 @@ var wins = 0;
 
 function roundWord(word){
     var blanks = ("");
+    correct =[];
+    incorrect = [];
     var letters = word.split("");
     for(i = 0; i < letters.length; i++){
         blanks += "_ ";
@@ -35,6 +36,7 @@ function roundWord(word){
     guessCount = 17;
     document.getElementById('guess-number').innerHTML = guessCount;
     document.getElementById('display-word').innerHTML = blanks;
+    document.getElementById('rem-letters').innerHTML = incorrect;
     letterPlay(letters); 
 } 
 
