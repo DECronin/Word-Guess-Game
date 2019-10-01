@@ -63,8 +63,6 @@ function letterPlay(letters){
         document.getElementById('guess-number').innerHTML = guessCount;
         document.getElementById('display-word').innerHTML = wordDisplay;
         document.getElementById('rem-letters').innerHTML = incorrect;
-        document.getElementById('wins').innerHTML = wins;
-        console.log(incorrect); ///////==========================find a way not to replicate previous incorrect answers
         if (guessCount < 1){
             newRound();
         }else if(wordDisplay.indexOf("_ ") < 0){
@@ -81,7 +79,7 @@ function newRound(){
     if (round < pastGenres.length){
         var word = pastGenres[round];
         roundWord(word);
-
+        document.getElementById('wins').innerHTML = wins;
         round++;
     }
     else{
