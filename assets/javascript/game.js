@@ -9,6 +9,7 @@ var correct =[];
 var incorrect = [];
 var guessCount = 17;
 var wins = 0;
+var prevWord = ('');
 
 //////FUNCTIONS///////////
 //======================//
@@ -34,6 +35,7 @@ function roundWord(word){
         blanks += "_ ";
     }
     guessCount = 17;
+    document.getElementById('previous-word').innerHTML = prevWord;
     document.getElementById('guess-number').innerHTML = guessCount;
     document.getElementById('display-word').innerHTML = blanks;
     document.getElementById('rem-letters').innerHTML = incorrect;
@@ -65,6 +67,7 @@ function letterPlay(letters){
         }else{
             incorrect.push(guess);
         }
+       
         document.getElementById('guess-number').innerHTML = guessCount;
         document.getElementById('display-word').innerHTML = wordDisplay;
         document.getElementById('rem-letters').innerHTML = incorrect;
@@ -85,6 +88,7 @@ function newRound(){
         var word = pastGenres[round];
         roundWord(word);
         document.getElementById('wins').innerHTML = wins;
+        prevWord = word;
         round++;
     }
     else{
