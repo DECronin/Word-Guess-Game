@@ -1,6 +1,9 @@
 ///////DECLARE GLOBAL VARIABLES////////
 //==================================//
-var genres = ["rock", "instromental", "jazz", "blues", "screamo", "classical", "oldies", "disney", "pop","folk", "rap", "kareoke"]; //....... this will become a potential matrix when adding music and images?
+var genres = ["indie", "rock", "instrumental", "jazz", "blues", "screamo", "classical", "oldies", "disney", "pop","folk", 
+"rap", "kareoke", "hymns", "opera", "dubstep", "gospel", "country", "acoustic", "lullabies", "jingles", "holliday", "bluegrass",
+"symphony", "steampunk", "latin", "bubblegum", "childrens", "alternative", "reggae", "funk", "bop", "metal", "electronic", "dance", 
+"ambiant", "burlesque", "skaa", "tribal", "contemporary", "renaissance", "yodeling", "grunge", "house"]; //....... this will become a potential matrix when adding music and images?
     //make an object instead of array to call forth images or sounds but later on
     //will have to alter exsisting 'call-forth's when that happens
 var pastGenres = [] ;
