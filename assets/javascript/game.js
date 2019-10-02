@@ -10,6 +10,7 @@ var incorrect = [];
 var guessCount = 17;
 var wins = 0;
 var prevWord = ('');
+var key = ['A', 'B','C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
 //////FUNCTIONS///////////
 //======================//
@@ -48,17 +49,21 @@ function letterPlay(letters){
         var guess = event.key.toUpperCase();
         var wordDisplay = ("");
         for(i = 0; i < letters.length; i++){
-            if(guess === letters[i].toUpperCase()){
-                wordDisplay += letters[i];
-                found = true;
-                inWord = true;
-            }else if(correct.indexOf(letters[i].toUpperCase()) > -1){
-                wordDisplay += letters[i];
-            }else if(incorrect.indexOf(guess.toUpperCase()) > -1){
-                return;
+            if (key.indexOf(guess) > -1){
+                if(guess === letters[i].toUpperCase()){
+                    wordDisplay += letters[i];
+                    found = true;
+                    inWord = true;
+                }else if(correct.indexOf(letters[i].toUpperCase()) > -1){
+                    wordDisplay += letters[i];
+                }else if(incorrect.indexOf(guess.toUpperCase()) > -1){
+                    return;
+                }else{
+                    wordDisplay += "_ ";
+                    continue;
+                }
             }else{
-                wordDisplay += "_ ";
-                continue;
+                return;
             }
         }
         guessCount--;
