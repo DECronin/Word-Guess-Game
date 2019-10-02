@@ -20,9 +20,13 @@ header{
 .game-play{
     width: 60%;
     float: right;
-    text-align: center;
 }
 p{
     font-size: 20px;
     font-weight: bold;
+    text-align: center;
+}
+.previous-round{
+    width: 40%;
+    float: left;
 }
