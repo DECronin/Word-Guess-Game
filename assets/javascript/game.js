@@ -10,7 +10,7 @@ var pastGenres = [] ;
 var round = 0;
 var correct =[];
 var incorrect = [];
-var guessCount = 17;
+var guessCount = 13;
 var wins = 0;
 var prevWord = ('');
 var key = ['A', 'B','C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
@@ -38,7 +38,7 @@ function roundWord(word){
     for(i = 0; i < letters.length; i++){
         blanks += "_ ";
     }
-    guessCount = 17;
+    guessCount = 13;
     document.getElementById('previous-word').innerHTML = prevWord;
     document.getElementById('guess-number').innerHTML = guessCount;
     document.getElementById('display-word').innerHTML = blanks;
@@ -100,7 +100,9 @@ function newRound(){
         round++;
     }
     else{
-        document.write("Game Over");
+        document.getElementById('display-word').innerHTML = "Game Over";
+        roundCataloging();
+        newRound();
     }
 }
 
