@@ -101,8 +101,6 @@ function newRound(){
     }
     else{
         document.getElementById('display-word').innerHTML = "Game Over";
-        roundCataloging();
-        newRound();
     }
 }
 
